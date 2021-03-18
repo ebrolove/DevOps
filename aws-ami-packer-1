@@ -1,7 +1,7 @@
 {
   "variables": {
     "aws_access_key": "AKIA5UCCANT2HMI6RSFG",
-    "aws_secret_key": "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",
+    "aws_secret_key": "",
     "ssh_username": "ec2-user"
   },
   "builders": [
