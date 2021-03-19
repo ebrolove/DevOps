@@ -1,0 +1,170 @@
+$ history
+    1  git --version
+    2  git clone https://github.com/S-T-Cloud-Factory/cfctrlprod02-tier.git
+    3  git clone https://ac-ebrahim-abebe@github.com/S-T-Cloud-Factory/cfctrlprod02-tier.git
+    4  git clone https://github.com/S-T-Cloud-Factory/cfctrlprod02-tier.git
+    5  git config --list
+    6  git config ac-ebrahim-abebe
+    7  clear
+    8  git clone https://github.com/S-T-Cloud-Factory/cfctrlprod02-tier.git
+    9  git clone https://github.com/S-T-Cloud-Factory/cfctrlprod02-tier.git
+   10  git clone https://github.com/S-T-Cloud-Factory/cfctrlprod02-network.git
+   11  git clone https://github.com/S-T-Cloud-Factory/cfctrlprod02-service.git
+   12  git clone https://github.com/S-T-Cloud-Factory/cfctrlprod02-application.git
+   13  git clone https://github.com/S-T-Cloud-Factory/cfmgtprod02-tier.git
+   14  git clone https://github.com/S-T-Cloud-Factory/cfmgtprod02-network.git
+   15  clear
+   16  git clone https://github.com/S-T-Cloud-Factory/cfmgtprod02-application.git
+   17  git --version
+   18  ansible --version
+   19  git --status
+   20  git status
+   21  git clone https://github.com/ebrolove/dhsTestRepo.git
+   22  ls
+   23  cd dhsTestRepo/
+   24  git status
+   25  vi file3.txt
+   26  ls
+   27  git remote
+   28  git remote -v
+   29  git status
+   30  git add .
+   31  git status
+   32  git commit -m "file 3 added"
+   33  git push
+   34  git config --list
+   35  git commit --author="Ebrahim ebrolove@gmail.com" -m "file 3 added"
+   36  git commit --author="Ebrahim Abebe <ebrolove@gmail.com>" -m "file 3 added"
+   37  git push --author="Ebrahim ebrolove@gmail.com"
+   38  git remote -v
+   39  git push --author="Ebrahim ebrolove@gmail.com" --repo https://github.com/ebrolove/dhsTestRepo.git
+   40  git push
+   41  git config user.email ebrolove@gmail.com
+   42  git push
+   43  git config --local credential.helper ""
+   44  git push
+   45  git push
+   46  git push
+   47  git push
+   48  clear
+   49  git remote -v
+   50  git remote add MT01 https://github.com/ebrolove/NewTenant
+   51  git remote -v
+   52  git push MT01 master
+   53  cd ..
+   54  ls
+   55  mkdir NewTenant
+   56  cd NewTenant/
+   57  git init
+   58  git add .
+   59  git status
+   60  git commit -m "New Tenant"
+   61   git config --global --edit
+   62  git commit -m "New Tenant"
+   63  ls
+   64   git config --global --edit
+   65  git status
+   66  git remote -v
+   67  clear
+   68  git status
+   69  history
+   70  clear
+   71  git remote add origin https://github.com/ebrolove/cf-steam.git
+   72  git push
+   73  git push --set-upstream origin master
+   74  history
+   75  git config --local credential.helper ""
+   76  git push --set-upstream origin master
+   77  git push --set-upstream origin --help
+   78  clear
+   79  cd ..
+   80  ls
+   81  rm -R NewTenant/
+   82  rm -R dhsTestRepo/
+   83  ls
+   84  rm -R NewTenant/
+   85  ls
+   86  clear
+   87  exit
+   88  git clone https://github.com/javahometech/packer.git
+   89  ls
+   90  cd packer/
+   91  clear
+   92  git -status
+   93  git status
+   94  git remote -v
+   95  git remote add packer https://github.com/ebrolove/Packer.git
+   96  git remote -v
+   97  git push packer
+   98  git config --global --unset credential.helper
+   99  git push packer
+  100  history
+  101  git config --local credential.helper ""
+  102  git push packer
+  103  git push packer
+  104  clear
+  105  git push packer
+  106  ls
+  107  git status
+  108  cd ..
+  109  ls
+  110  git status
+  111  ls
+  112  mkdir terra-packer
+  113  ls
+  114  cp * terra-packer/
+  115  cp apache.sh terra-packer/
+  116  cp aws* terra-packer/
+  117  cp vars.json main.tf terra-packer/
+  118  cd terra-packer/
+  119  ls
+  120  git init
+  121  git remote -v
+  122  git remote add ebro https://github.com/ebrolove/Packer.git
+  123  git push ebro
+  124  git push --set-upstream ebro
+  125  git push --set-upstream ebro master
+  126  ls
+  127  cd ..
+  128  clear
+  129  git status
+  130  ls
+  131  git clone https://github.com/ebrolove/Packer.git
+  132  ls
+  133  git config --local credential.helper ""
+  134  ls
+  135  ls -l
+  136  clear
+  137  git clone https://github.com/ebrolove/Packer.git
+  138  git remote -v
+  139  git clone https://github.com/ebrolove/Packer.git
+  140  ls
+  141  cp apache.sh aws* main.tf vars.json Packer/
+  142  cd Packer/
+  143  ls -l
+  144  git status
+  145  git add .
+  146  git commit -m "adding ami creation files I used for testing"
+  147  vi vars.json
+  148  vi aws-ami-packer
+  149  vi aws-ami-packer-1
+  150  git status
+  151  git add .
+  152  git commit -m "adding ami creation files I used for testing"
+  153  git remote -v
+  154  git push
+  155  git config --local credential.helper ""
+  156  git push
+  157  git push
+  158  clear
+  159  ls
+  160  cd ..
+  161  ls
+  162  rm -R terra-packer/
+  163  ls- l
+  164  ls - l
+  165  ls -l
+  166  ls -l
+  167  ls -l
+  168  exit
+  169  history
