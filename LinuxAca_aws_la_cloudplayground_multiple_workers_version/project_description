@@ -1,0 +1,90 @@
+Deploying to AWS with Terraform and Ansible
+Introduction
+You were recently hired as an Infrastructure Automation Engineer at a SaaS company. The company is trying to move away from cloud-provider-specific infrastructure as code. They want to test out Terraform for infrastructure deployment as it is cloud agnostic and Ansible as it is OS agnostic and also a hybrid IaC tool.
+
+Your first task is to use Terraform and Ansible to deploy a distributed Jenkins CI/CD pipeline and put it behind one of the company's DNS domains for testing. It sounds easy enough but there's quite some planning which will go into this and you're already on top of it.
+
+Solution
+Log in to the Terraform Controller Node EC2 Instance
+Find the details for logging in to the Terraform Controller node provided by the hands-on lab interface and log in to the node using SSH.
+
+ ssh cloud_user@<IP-OF-TERRAFORM-CONTROLLER>
+Note: This Instance already has an EC2 instance profile (role) attached to it and has all necessary AWS API permissions required for this lab. It also has the AWS CLI set up and is configured with the AWS account attached to this lab, for which the console login credentials are also provided in the lab interface page once the lab spins up.
+
+After logging in, check the version of Terraform that is installed. Execute the following command to check:
+
+ terraform version
+Clone the GitHub Repo for Terraform Code
+Use the git command to clone the GitHub repo which has the Terraform code to deploy to complete this lab. GitHub repo URL.
+
+Execute the following command:
+
+ git clone https://github.com/linuxacademy/content-deploying-to-aws-ansible-terraform.git`
+Change directory to the directory for lab Terraform code:
+
+ cd content-deploying-to-aws-ansible-terraform/aws_la_cloudplayground_multiple_workers_version`
+Execute ls and examine the contents of the directory you're in.
+
+View the contents of backend.tf to view the backend information for storing state files.
+
+Configure an S3 Bucket
+Create the S3 bucket, providing a unique bucket name:
+
+ aws s3api create-bucket --bucket <UNIQUE_BUCKET_NAME>
+Copy the unique bucket name after it is successfully created. Edit the backend.tf file and replace "" for the bucket variable with your unique bucket name.
+
+Save and close the file
+
+ :wq
+Configure Route 53 Public DNS
+Display the domain name:
+
+ aws route53 list-hosted-zones | jq -r .HostedZones[].Name | egrep "cmcloud*"
+Copy the result of the previous command and edit the variables.tf file.
+
+ vim variables.tf
+Navigate to the variable "dns-name" stanza and replace the text "" with the domain name we copied earlier. Be sure to include the . at the end of the domain name.
+
+Save and close the file:
+
+ :wq
+Create an SSH Key Pair
+Create the key pair, pressing Enter three times after running the command to accept the defaults:
+
+ ssh-keygen -t rsa
+Deploy the Terraform Code
+Initialize the Terraform directory you changed into to download the required provider:
+
+ terraform init
+Ensure Terraform code is properly formatted:
+
+ terraform fmt
+Ensure code has proper syntax and no errors:
+
+ terraform validate
+See the execution plan and note the number of resources that will be created:
+
+ terraform plan
+Deploy resources
+
+ terraform apply
+Enter yes when prompted.
+
+After terraform apply has run successfully, you can use the AWS CLI on the Controller node to list, describe created resources, and additionally also log in to the AWS Console to verify and investigate created resources.
+
+Finally, on the Terraform Controller node CLI, execute terraform destroy and enter yes when prompted to delete all resources which were created and ensure that it runs through successfully.
+
+Test Out Your Deployment
+Test out the URL of your website returned in Terraform outputs.
+
+In a new web browser tab, navigate to the URL provided in the results of the terraform apply command run previously. Use the following Jenkins credentials:
+
+Username: admin
+Password password
+Changing the workers count by modifying workers-count variable in the variables.tf file and ensure that Terraform apply is successful.
+
+Click Manage Jenkins from the menu on the left of the page.
+Click Manage Nodes and Clouds from the System Configuration section.
+From your terminal, edit the variables.tf file and increase the workers-count variable from 1** to **0.
+
+ vim variables.tf

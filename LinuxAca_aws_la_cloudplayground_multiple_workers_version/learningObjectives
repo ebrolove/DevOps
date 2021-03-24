@@ -1,0 +1,49 @@
+Learning Objectives
+check_circle
+Log in to the Terraform Controller Node EC2 Instance
+Find the details for logging in to the Terraform Controller node provided by the hands-on lab interface and log in to the node using SSH.
+
+ ssh cloud_user@<IP-OF-TERRAFORM-CONTROLLER>
+Note: This Instance already has an EC2 instance profile (role) attached to it and has all necessary AWS API permissions required for this lab. It also has the AWS CLI set up and is configured with the AWS account attached to this lab, for which the console login credentials are also provided in the lab interface page once the lab spins up.
+
+After logging in, check the version of Terraform that is installed. Execute the following command to check:
+
+ terraform version
+check_circle
+Clone the GitHub Repo for Terraform Code
+Use the git command to clone the GitHub repo which has the Terraform code to deploy to complete this lab. GitHub repo URL.
+
+Execute the following command:
+
+ git clone https://github.com/linuxacademy/content-deploying-to-aws-ansible-terraform.git
+Change directory to the directory for lab Terraform code:
+
+ cd content-deploying-to-aws-ansible-terraform/aws_la_cloudplayground_multiple_workers_version
+Execute ls and examine the contents of the directory you're in.
+
+check_circle
+Deploy the Terraform Code
+Execute terraform init to initialize the Terraform directory you changed into to download the required provider.
+Execute terraform fmt to ensure Terraform code is formatted properly.
+Execute terraform validate to ensure code has proper syntax and no errors.
+Execute terraform plan and enter yes when prompted to see the execution plan and note the number of resources that will be created.
+Execute terraform apply and enter yes when prompted to actually deploy resources.
+
+After terraform apply has run successfully, you can either use AWS CLI on the Controller node to list, describe created resources, and additionally also log in to the AWS Console to verify and investigate created resources.
+
+Finally, on the Terraform Controller node CLI, execute terraform destroy and enter yes when prompted to delete all resources which were created and ensure that it runs through successfully.
+
+check_circle
+Test Out Your Deployment
+Jenkins Credentials:
+
+Username: admin
+Password password
+Test your deployment by carrying out the following steps:
+
+Test out the URL of your website returned in Terraform outputs.
+Changing the workers count by modifying workers-count variable in the variables.tf file and ensure that Terraform apply is successful. You can also log in to Jenkins, go in to Settings, and under the Manage nodes setting, check that the number of Jenkins workers you had set up are the number of workers showing as integrated with the Jenkins Master node.
+Use the variable external_ip in variables.tf file to tie down SSH access to Jenkins nodes only from your home/work IP or from the Terraform Controller node. You can also pass in your current public IP through the external_ip variable dynamically on the CLI via something like this:
+
+ terraform apply -var external_ip=$(curl ifconfig.me)/32
+This should pass your public IP in x.x.x.x/32 format to the external_ip variable. However, ifconfig.me is just one method to find your public URL. Feel free to use whatever method you prefer.
