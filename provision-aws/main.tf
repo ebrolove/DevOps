@@ -2,7 +2,7 @@
             version = "~> 2.65"
             region  = "us-east-2"
 
-        } */
+} */
 
 
 
@@ -15,7 +15,7 @@ provider "aws" {
 #creating a VPC 
 resource "aws_vpc" "my_vpc" {
   cidr_block = "172.16.0.0/16"
-  
+
 
   tags = {
     Name = "tf-ebro_vpc"
@@ -49,7 +49,7 @@ resource "aws_network_interface" "NIC_ebro" {
 #get the AMI details to be used for creating the EC2
 #note that the AMI gets created using packer and the details are in the packer build file or go to AWS and
 #find the details there
-data "aws_ami" "AWS_EC2" { 
+data "aws_ami" "AWS_EC2" {
   most_recent = true
 
   filter {
