@@ -1,5 +1,5 @@
 #ACM CONFIGURATION
-#Creates ACM issues certificate and requests validation via DNS(Route53)
+#Creates/issues ACM-certificate and requests validation via DNS(Route53)
 resource "aws_acm_certificate" "jenkins-lb-https" {
   provider          = aws.region-master
   domain_name       = join(".", ["jenkins", data.aws_route53_zone.dns.name])
@@ -18,9 +18,18 @@ resource "aws_acm_certificate_validation" "cert" {
   validation_record_fqdns = [aws_route53_record.cert_validation[each.key].fqdn]
 }
 
-####ACM CONFIG END
+####ACM CONFIG ENDS HERE
 
 
+/*
+ so far above a certificate is generated/issued/created by the ACM and the validation of
+  the certicficate by the DNS is completed
+  Validation = verification that you own a site/domain
+
+  Down below is follows the creation of the load balancer (lb)
+*/
+
+#Creates an app-lb
 resource "aws_lb" "application-lb" {
   provider           = aws.region-master
   name               = "jenkins-lb"
@@ -33,6 +42,7 @@ resource "aws_lb" "application-lb" {
   }
 }
 
+#Creates the target VPC where the lb will be routing traffic to
 resource "aws_lb_target_group" "app-lb-tg" {
   provider    = aws.region-master
   name        = "app-lb-tg"
@@ -53,6 +63,7 @@ resource "aws_lb_target_group" "app-lb-tg" {
   }
 }
 
+#creates a lisner for the load balancer not secure
 resource "aws_lb_listener" "jenkins-listener" {
   provider          = aws.region-master
   load_balancer_arn = aws_lb.application-lb.arn
@@ -66,6 +77,7 @@ resource "aws_lb_listener" "jenkins-listener" {
   }
 }
 
+#creates a lisner for the jenkins serevr secure
 resource "aws_lb_listener" "jenkins-listener-http" {
   provider          = aws.region-master
   load_balancer_arn = aws_lb.application-lb.arn
