@@ -19,7 +19,7 @@ variable "dns-name" {
 
 variable "profile" {
   type    = string
-  default = "default"
+  default = "default"  # Meaning the default AWS profile from the OS will be used to access the AWS account
 }
 
 variable "region-master" {
