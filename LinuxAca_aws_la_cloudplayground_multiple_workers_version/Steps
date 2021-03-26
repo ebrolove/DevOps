@@ -1,0 +1,13 @@
+1- Get the DNS name value by quering the AWS account and pass that value to the variable DNS-name inside the variables file. (Code inside aws_get_cp_hostedzone)
+
+2- Determine variables.tf  (note for instance that in this variable we are defining that the default profile in the OS will be used for AWS access key and secret key)
+
+
+3- 
+  A - Define the providers details (note that the profile comes from the variables above)--depends on step -1
+
+  B - Define backend.tf (depends on step -1 to get the profile (access Key and secret key) details )
+  
+
+4- Then we provide the network using network_setup.tf file 
+  
