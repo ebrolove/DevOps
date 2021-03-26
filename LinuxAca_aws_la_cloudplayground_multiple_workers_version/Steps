@@ -10,4 +10,11 @@
   
 
 4- Then we provide the network using network_setup.tf file 
-  
+
+*****To be verified******
+
+5- Then we provide the alb and acm (note that the details obtained after we create the SSL certificate here will be used by the next step to create records in the hosted zone)
+    alb_acm.tf
+
+6- Then based on the certificate generated details, we go and create records in the dns hosted zone 
+    dns.tf
