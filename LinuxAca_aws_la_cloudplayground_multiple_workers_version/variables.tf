@@ -14,7 +14,7 @@ variable "instance-type" {
 
 variable "dns-name" {
   type    = string
-  default = "cmcloudlab1803.info." # e.g "cmcloudlab1234.info."
+  default = "cmcloudlab1803.info." # e.g "cmcloudlab1234.info."--- the value for comes from running the code inside Code inside aws_get_cp_hostedzone file
 }
 
 variable "profile" {
