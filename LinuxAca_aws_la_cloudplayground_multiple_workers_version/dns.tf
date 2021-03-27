@@ -8,7 +8,8 @@ data "aws_route53_zone" "dns" {
 #Create record in hosted zone for ACM Certificate Domain verification
 resource "aws_route53_record" "cert_validation" {
   provider = aws.region-master
-  for_each = {
+  for_each = { #go to the acm resource and collect the values for domain_name and then assign those values in the following arguments next to this for each argumnt 
+               # basically the for_each argument gets the values and then those values get assigned to the other arguments following this 
     for val in aws_acm_certificate.jenkins-lb-https.domain_validation_options : val.domain_name => {
       name   = val.resource_record_name
       record = val.resource_record_value
