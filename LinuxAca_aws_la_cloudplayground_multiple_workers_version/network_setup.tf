@@ -119,7 +119,7 @@ resource "aws_route_table" "internet_route_oregon" {
     cidr_block                = "10.0.1.0/24"
     vpc_peering_connection_id = aws_vpc_peering_connection.uswest1-uswest2.id
   }
-  lifecycle {
+  lifecycle {  #This is a meta argument ===> https://www.terraform.io/docs/language/meta-arguments/lifecycle.html
     ignore_changes = all
   }
   tags = {
