@@ -77,7 +77,9 @@
         master: "{{ master_ip }}"
       shell: "cat /home/ec2-user/creds.xml | java -jar /home/ec2-user/jenkins-cli.jar -auth @/home/ec2-user/jenkins_auth -s http://{{master}}:8080 create-credentials-by-xml system::system::jenkins _"
 
-    - name: Register node as worker
+    - name: Register node as worker ## This is executed inside the master server. Note also that the parameters are for the jenkins-cli.jar (java application) sitting inside the 
+                                    ## master node. And the -auth and -s and all the options that folllow are otions for this jenkins CLI client 
+          
       vars:
         master: "{{ master_ip }}"
       shell: 'cat /home/ec2-user/node.xml | java -jar /home/ec2-user/jenkins-cli.jar -auth @/home/ec2-user/jenkins_auth -s http://{{ master }}:8080 create-node'
