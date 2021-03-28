@@ -25,7 +25,7 @@
         dest: /etc/yum.repos.d/jenkins.repo
     
     - name: Import Jenkins Repo GPG key
-      rpm_key:
+      rpm_key:  ## Adds or removes (rpm –import) a gpg key to your rpm database
         state: present
         key: https://pkg.jenkins.io/redhat/jenkins.io.key
  
